@@ -47,7 +47,6 @@ export default function ScannerScreen(props: Props) {
 
   const viewBox = REA.useDerivedValue(() => {
     console.log('update viewbox')
-    let viewBoxValue = ''
     let rotated = false
     if (platform.value === 'android') {
       if (screenWidth.value > screenHeight.value) {
@@ -58,7 +57,7 @@ export default function ScannerScreen(props: Props) {
         rotated = true
       }
     }
-    viewBoxValue = rotated
+    const viewBoxValue = rotated
       ? '0 0 ' + frameHeight.value + ' ' + frameWidth.value
       : '0 0 ' + frameWidth.value + ' ' + frameHeight.value
     console.log(viewBoxValue)
