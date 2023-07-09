@@ -1,5 +1,9 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
+# React Native Document Scanner App
+This repository contains a React Native application that leverages the native capabilities of Android and iOS devices to scan documents.
+The app serves as a platform for experimenting with document scanning functionality and exploring the potential of mobile devices for document digitization.
+
 # Getting Started
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
