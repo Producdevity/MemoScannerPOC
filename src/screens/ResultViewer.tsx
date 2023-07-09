@@ -31,7 +31,7 @@ let normalizedResult: any = {}
 function ResultViewerScreen(props: Props) {
   const [normalizedImagePath, setNormalizedImagePath] = useState<
     undefined | string
-  >(undefined)
+  >()
 
   useEffect(() => {
     normalizedResult = {}
@@ -65,19 +65,23 @@ function ResultViewerScreen(props: Props) {
         )
       }
       console.log('update settings done')
-      let detectionResult: DetectedQuadResult =
+      const detectionResult: DetectedQuadResult =
         props.route.params.detectionResult
-      let photoPath = props.route.params.photoPath
-      let normalizedImageResult = await DDN.normalizeFile(
+      const photoPath = props.route.params.photoPath
+
+      if (!photoPath) throw new Error('photoPath is undefined')
+
+      const normalizedImageResult = await DDN.normalizeFile(
         photoPath,
         detectionResult.location,
         {saveNormalizationResultAsFile: true},
       )
-      console.log(normalizedImageResult)
-      if (normalizedImageResult.imageURL) {
-        normalizedResult[value] = normalizedImageResult.imageURL
-        setNormalizedImagePath(normalizedImageResult.imageURL)
-      }
+      console.log({normalizedImageResult})
+
+      if (!normalizedImageResult.imageURL) return
+
+      normalizedResult[value] = normalizedImageResult.imageURL
+      setNormalizedImagePath(normalizedImageResult.imageURL)
     }
   }
 
@@ -103,9 +107,7 @@ function ResultViewerScreen(props: Props) {
             initial={0}
             formHorizontal={true}
             labelHorizontal={false}
-            onPress={value => {
-              normalize(value)
-            }}
+            onPress={normalize}
           />
         </View>
       </View>

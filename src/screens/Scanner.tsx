@@ -4,8 +4,8 @@ import React from 'react'
 import {
   Alert,
   Dimensions,
-  Image,
   Platform,
+  Image,
   SafeAreaView,
   StyleSheet,
   Text,
