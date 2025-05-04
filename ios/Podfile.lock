@@ -497,11 +497,11 @@ PODS:
     - React-jsi (= 0.72.1)
     - React-logger (= 0.72.1)
     - React-perflogger (= 0.72.1)
-  - RNReanimated (3.3.0):
+  - RNReanimated (2.14.4):
     - DoubleConversion
     - FBLazyVector
+    - FBReactNativeSpec
     - glog
-    - hermes-engine
     - RCT-Folly
     - RCTRequired
     - RCTTypeSafety
@@ -511,13 +511,11 @@ PODS:
     - React-Core/RCTWebSocket
     - React-CoreModules
     - React-cxxreact
-    - React-hermes
     - React-jsi
     - React-jsiexecutor
     - React-jsinspector
     - React-RCTActionSheet
     - React-RCTAnimation
-    - React-RCTAppDelegate
     - React-RCTBlob
     - React-RCTImage
     - React-RCTLinking
@@ -789,7 +787,7 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 67707a955b9ecc628cc38bdc721fbc498910f0fd
   React-utils: 0a70ea97d4e2749f336b450c082905be1d389435
   ReactCommon: e593d19c9e271a6da4d0bd7f13b28cfeae5d164b
-  RNReanimated: 9f7068e43b9358a46a688d94a5a3adb258139457
+  RNReanimated: 5ec2c9f107adeaab2a071736a1614526bf712c14
   RNScreens: 68fd1060f57dd1023880bf4c05d74784b5392789
   RNShare: a9e83e3300d1bdc3b681a53507954ddb11118aa6
   RNSVG: 53c661b76829783cdaf9b7a57258f3d3b4c28315

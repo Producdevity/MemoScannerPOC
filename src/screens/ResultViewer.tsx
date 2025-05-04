@@ -1,5 +1,5 @@
-import {RouteProp} from '@react-navigation/native'
-import React, {useEffect, useState} from 'react'
+import { RouteProp } from '@react-navigation/native'
+import React, { useEffect, useState } from 'react'
 import {
   Image,
   SafeAreaView,
@@ -10,20 +10,25 @@ import {
 } from 'react-native'
 import RadioForm from 'react-native-simple-radio-button'
 import * as DDN from 'vision-camera-dynamsoft-document-normalizer'
-import type {DetectedQuadResult} from 'vision-camera-dynamsoft-document-normalizer'
-import Share, {ShareOptions} from 'react-native-share'
-import {NativeStackNavigationProp} from '@react-navigation/native-stack'
-import {RootStackParamList} from '../../App'
+import type { DetectedQuadResult } from 'vision-camera-dynamsoft-document-normalizer'
+import Share, { ShareOptions } from 'react-native-share'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../App'
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'ResultViewer'>
   route: RouteProp<RootStackParamList, 'ResultViewer'>
 }
 
-const radio_props = [
-  {label: 'Binary', value: 0},
-  {label: 'Gray', value: 1},
-  {label: 'Color', value: 2},
+type RadioProps = {
+  label: string
+  value: number
+}
+
+const radio_props: RadioProps[] = [
+  { label: 'Binary', value: 0 },
+  { label: 'Gray', value: 1 },
+  { label: 'Color', value: 2 },
 ]
 
 let normalizedResult: any = {}
@@ -42,7 +47,7 @@ function ResultViewerScreen(props: Props) {
   const share = () => {
     console.log('save')
     let options: ShareOptions = {}
-    options.url = 'file://' + normalizedImagePath
+    options.url = `file://${normalizedImagePath}`
     Share.open(options)
   }
 
@@ -74,9 +79,9 @@ function ResultViewerScreen(props: Props) {
       const normalizedImageResult = await DDN.normalizeFile(
         photoPath,
         detectionResult.location,
-        {saveNormalizationResultAsFile: true},
+        { saveNormalizationResultAsFile: true },
       )
-      console.log({normalizedImageResult})
+      console.log({ normalizedImageResult })
 
       if (!normalizedImageResult.imageURL) return
 
@@ -90,13 +95,13 @@ function ResultViewerScreen(props: Props) {
       {normalizedImagePath && (
         <Image
           style={[StyleSheet.absoluteFill, styles.image]}
-          source={{uri: 'file://' + normalizedImagePath}}
+          source={{ uri: 'file://' + normalizedImagePath }}
         />
       )}
       <View style={styles.control}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={share} style={styles.button}>
-            <Text style={{fontSize: 15, color: 'black', alignSelf: 'center'}}>
+            <Text style={{ fontSize: 15, color: 'black', alignSelf: 'center' }}>
               Share
             </Text>
           </TouchableOpacity>
